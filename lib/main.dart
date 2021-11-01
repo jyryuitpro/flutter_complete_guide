@@ -50,10 +50,10 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
-            Answer(selectHandler: _answerQuestion),
-            Answer(selectHandler: _answerQuestion),
-            Answer(selectHandler: _answerQuestion),
+            Question(questions[_questionIndex]['questionText'] as String),
+            ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
+              return Answer(selectHandler: _answerQuestion, answerText: answer,);
+            }).toList(),
           ],
         ),
       ),
